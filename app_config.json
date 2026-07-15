@@ -1,0 +1,1401 @@
+{
+  "application_title": "Prédiction du recours formel aux soins de santé",
+  "application_subtitle": "Ménages de Kinshasa — modèle prédictif issu de la nouvelle base analytique",
+  "feature_order": [
+    "Sexe du répondant",
+    "Tranche d’âge du répondant",
+    "Situation matrimoniale",
+    "Niveau d’instruction du répondant",
+    "Niveau d’instruction du conjoint/de la conjointe",
+    "Activité principale du répondant",
+    "Le répondant dispose-t-il d’un revenu régulier ?",
+    "Nombre total de personnes dans le ménage",
+    "Nombre d’enfants de moins de 5 ans",
+    "Nombre de personnes âgées de 60 ans et plus",
+    "Nombre de personnes ayant une activité rémunérée dans le ménage",
+    "Revenu mensuel approximatif total du ménage",
+    "Dépense mensuelle en alimentation",
+    "Dépense mensuelle en santé",
+    "Dépense mensuelle en transport",
+    "Dépense mensuelle en éducation",
+    "Au moins un membre du ménage bénéficie-t-il d’une assurance ou mutuelle de santé ?",
+    "Type de couverture santé",
+    "Cette couverture facilite-t-elle l’accès aux soins ?",
+    "En cas de maladie grave, le ménage pourrait-il faire face aux dépenses ?",
+    "Au cours des 12 derniers mois, le ménage a-t-il renoncé aux soins pour raisons financières ?",
+    "Au cours des 12 derniers mois, le ménage a-t-il connu une dépense de santé difficile à supporter ?",
+    "Source principale d’eau du ménage",
+    "Le ménage dispose-t-il régulièrement d’eau potable ?",
+    "Type principal de toilettes utilisé",
+    "État de salubrité autour du ménage",
+    "Commune",
+    "Quartier",
+    "_Coordonnées GPS du ménage_latitude",
+    "_Coordonnées GPS du ménage_longitude",
+    "Existe-t-il une structure de santé formelle proche du domicile ?",
+    "Type de structure la plus proche",
+    "Distance estimée entre le ménage et la structure la plus proche",
+    "Temps moyen pour atteindre cette structure",
+    "Moyen principal utilisé pour s’y rendre",
+    "Coût moyen aller-retour du transport vers cette structure",
+    "L’état de la route rend-il difficile l’accès à cette structure ?",
+    "Les horaires d’ouverture de cette structure sont-ils adaptés aux besoins du ménage ?",
+    "Cette structure est-elle disponible en cas d’urgence ?",
+    "Nombre approximatif de structures de santé accessibles dans votre quartier",
+    "Localisation de la structure de santé la plus proche",
+    "Le ménage fréquente-t-il habituellement la structure la plus proche ?",
+    "Couverture sanitaire perçue du quartier",
+    "Nombre de personnes ayant eu besoin de soins",
+    "Personne concernée par le cas le plus récent",
+    "Sexe de la personne malade",
+    "Type principal de maladie ou problème de santé",
+    "Gravité perçue du problème de santé",
+    "Fréquence des épisodes de maladie dans le ménage au cours du dernier mois",
+    "Qualité globale des services disponibles dans la zone",
+    "Niveau de confiance envers les structures formelles",
+    "Disponibilité des médicaments dans les structures fréquentées",
+    "Temps d’attente dans les structures",
+    "Accueil du personnel de santé"
+  ],
+  "groups": {
+    "localisation": [
+      "Commune",
+      "Quartier",
+      "_Coordonnées GPS du ménage_latitude",
+      "_Coordonnées GPS du ménage_longitude"
+    ],
+    "profil": [
+      "Sexe du répondant",
+      "Tranche d’âge du répondant",
+      "Situation matrimoniale",
+      "Niveau d’instruction du répondant",
+      "Niveau d’instruction du conjoint/de la conjointe",
+      "Activité principale du répondant",
+      "Le répondant dispose-t-il d’un revenu régulier ?",
+      "Nombre total de personnes dans le ménage",
+      "Nombre d’enfants de moins de 5 ans",
+      "Nombre de personnes âgées de 60 ans et plus",
+      "Nombre de personnes ayant une activité rémunérée dans le ménage"
+    ],
+    "economie": [
+      "Revenu mensuel approximatif total du ménage",
+      "Dépense mensuelle en alimentation",
+      "Dépense mensuelle en santé",
+      "Dépense mensuelle en transport",
+      "Dépense mensuelle en éducation",
+      "Au moins un membre du ménage bénéficie-t-il d’une assurance ou mutuelle de santé ?",
+      "Type de couverture santé",
+      "Cette couverture facilite-t-elle l’accès aux soins ?",
+      "En cas de maladie grave, le ménage pourrait-il faire face aux dépenses ?",
+      "Au cours des 12 derniers mois, le ménage a-t-il renoncé aux soins pour raisons financières ?",
+      "Au cours des 12 derniers mois, le ménage a-t-il connu une dépense de santé difficile à supporter ?"
+    ],
+    "environnement": [
+      "Source principale d’eau du ménage",
+      "Le ménage dispose-t-il régulièrement d’eau potable ?",
+      "Type principal de toilettes utilisé",
+      "État de salubrité autour du ménage"
+    ],
+    "offre": [
+      "Existe-t-il une structure de santé formelle proche du domicile ?",
+      "Type de structure la plus proche",
+      "Distance estimée entre le ménage et la structure la plus proche",
+      "Temps moyen pour atteindre cette structure",
+      "Moyen principal utilisé pour s’y rendre",
+      "Coût moyen aller-retour du transport vers cette structure",
+      "L’état de la route rend-il difficile l’accès à cette structure ?",
+      "Les horaires d’ouverture de cette structure sont-ils adaptés aux besoins du ménage ?",
+      "Cette structure est-elle disponible en cas d’urgence ?",
+      "Nombre approximatif de structures de santé accessibles dans votre quartier",
+      "Localisation de la structure de santé la plus proche",
+      "Le ménage fréquente-t-il habituellement la structure la plus proche ?",
+      "Couverture sanitaire perçue du quartier"
+    ],
+    "besoin": [
+      "Nombre de personnes ayant eu besoin de soins",
+      "Personne concernée par le cas le plus récent",
+      "Sexe de la personne malade",
+      "Type principal de maladie ou problème de santé",
+      "Gravité perçue du problème de santé",
+      "Fréquence des épisodes de maladie dans le ménage au cours du dernier mois"
+    ],
+    "perception": [
+      "Qualité globale des services disponibles dans la zone",
+      "Niveau de confiance envers les structures formelles",
+      "Disponibilité des médicaments dans les structures fréquentées",
+      "Temps d’attente dans les structures",
+      "Accueil du personnel de santé"
+    ]
+  },
+  "labels": {
+    "_Coordonnées GPS du ménage_latitude": "Latitude du ménage",
+    "_Coordonnées GPS du ménage_longitude": "Longitude du ménage",
+    "Le répondant dispose-t-il d’un revenu régulier ?": "Le répondant dispose-t-il d’un revenu régulier ?",
+    "Au moins un membre du ménage bénéficie-t-il d’une assurance ou mutuelle de santé ?": "Assurance ou mutuelle de santé",
+    "Cette couverture facilite-t-elle l’accès aux soins ?": "La couverture facilite-t-elle l’accès aux soins ?",
+    "En cas de maladie grave, le ménage pourrait-il faire face aux dépenses ?": "Capacité à faire face aux dépenses d’une maladie grave",
+    "Au cours des 12 derniers mois, le ménage a-t-il renoncé aux soins pour raisons financières ?": "Renoncement aux soins pour raisons financières",
+    "Au cours des 12 derniers mois, le ménage a-t-il connu une dépense de santé difficile à supporter ?": "Dépense de santé difficile à supporter",
+    "Existe-t-il une structure de santé formelle proche du domicile ?": "Structure formelle proche du domicile",
+    "L’état de la route rend-il difficile l’accès à cette structure ?": "Difficulté liée à l’état de la route",
+    "Les horaires d’ouverture de cette structure sont-ils adaptés aux besoins du ménage ?": "Horaires d’ouverture adaptés",
+    "Cette structure est-elle disponible en cas d’urgence ?": "Disponibilité en cas d’urgence",
+    "Le ménage fréquente-t-il habituellement la structure la plus proche ?": "Fréquentation habituelle de la structure la plus proche",
+    "Fréquence des épisodes de maladie dans le ménage au cours du dernier mois": "Fréquence des épisodes de maladie au cours du dernier mois"
+  },
+  "categories": {
+    "Sexe du répondant": [
+      "Masculin",
+      "Féminin"
+    ],
+    "Tranche d’âge du répondant": [
+      "Moins de 25 ans",
+      "25–34 ans",
+      "55–64 ans",
+      "45–54 ans",
+      "35–44 ans",
+      "65 ans et plus"
+    ],
+    "Situation matrimoniale": [
+      "Célibataire",
+      "Marié(e)",
+      "Union libre",
+      "Divorcé(e)/séparé(e)",
+      "Veuf/veuve"
+    ],
+    "Niveau d’instruction du répondant": [
+      "Supérieur/universitaire",
+      "Secondaire",
+      "Aucun",
+      "Primaire"
+    ],
+    "Niveau d’instruction du conjoint/de la conjointe": [
+      "Supérieur/universitaire",
+      "Secondaire",
+      "Non applicable",
+      "Aucun",
+      "Primaire"
+    ],
+    "Activité principale du répondant": [
+      "Étudiant",
+      "Salarié du secteur privé",
+      "Commerçant",
+      "Sans emploi",
+      "Salarié du secteur public",
+      "Indépendant/entrepreneur",
+      "Retraité",
+      "Ménagère",
+      "Travail journalier/informel"
+    ],
+    "Le répondant dispose-t-il d’un revenu régulier ?": [
+      "Oui",
+      "Non"
+    ],
+    "Nombre total de personnes dans le ménage": [
+      "3–4 personnes",
+      "7 personnes et plus",
+      "5–6 personnes",
+      "1–2 personnes"
+    ],
+    "Nombre d’enfants de moins de 5 ans": [
+      "Aucun",
+      "Deux enfants",
+      "Un enfant",
+      "Trois enfants et plus"
+    ],
+    "Nombre de personnes âgées de 60 ans et plus": [
+      "Aucune",
+      "Une personne",
+      "Deux personnes",
+      "Trois personnes et plus"
+    ],
+    "Nombre de personnes ayant une activité rémunérée dans le ménage": [
+      "Deux personnes",
+      "Trois personnes et plus",
+      "Une personne",
+      "Aucune"
+    ],
+    "Revenu mensuel approximatif total du ménage": [
+      "Ne sait pas/refus",
+      "100–199 USD",
+      "200–299 USD",
+      "300–499 USD",
+      "Moins de 100 USD",
+      "500 USD et plus"
+    ],
+    "Dépense mensuelle en alimentation": [
+      "200 000–299 999 FC",
+      "300 000 FC et plus",
+      "Moins de 100 000 FC",
+      "100 000–199 999 FC"
+    ],
+    "Dépense mensuelle en santé": [
+      "20 000–49 999 FC",
+      "50 000–99 999 FC",
+      "Moins de 20 000 FC",
+      "100 000 FC et plus"
+    ],
+    "Dépense mensuelle en transport": [
+      "20 000–49 999 FC",
+      "100 000 FC et plus",
+      "Moins de 20 000 FC",
+      "50 000–99 999 FC"
+    ],
+    "Dépense mensuelle en éducation": [
+      "100 000–199 999 FC",
+      "Aucune",
+      "200 000 FC et plus",
+      "50 000–99 999 FC",
+      "Moins de 50 000 FC"
+    ],
+    "Au moins un membre du ménage bénéficie-t-il d’une assurance ou mutuelle de santé ?": [
+      "Oui",
+      "Non"
+    ],
+    "Type de couverture santé": [
+      "Mutuelle de santé",
+      "Assurance employeur",
+      "Assurance privée",
+      "Programme public"
+    ],
+    "Cette couverture facilite-t-elle l’accès aux soins ?": [
+      "Oui, un peu",
+      "Oui, beaucoup",
+      "Non"
+    ],
+    "En cas de maladie grave, le ménage pourrait-il faire face aux dépenses ?": [
+      "Oui",
+      "Non",
+      "Difficilement"
+    ],
+    "Au cours des 12 derniers mois, le ménage a-t-il renoncé aux soins pour raisons financières ?": [
+      "Non",
+      "Oui"
+    ],
+    "Au cours des 12 derniers mois, le ménage a-t-il connu une dépense de santé difficile à supporter ?": [
+      "Non",
+      "Oui"
+    ],
+    "Source principale d’eau du ménage": [
+      "Robinet dans la parcelle",
+      "Forage/puits aménagé",
+      "Rivière/source naturelle",
+      "Robinet public",
+      "Puits non aménagé",
+      "Eau achetée auprès des revendeurs"
+    ],
+    "Le ménage dispose-t-il régulièrement d’eau potable ?": [
+      "Oui",
+      "Non"
+    ],
+    "Type principal de toilettes utilisé": [
+      "Latrines améliorées",
+      "Toilettes modernes avec chasse d’eau",
+      "Toilettes partagées",
+      "Latrines simples",
+      "Aucun dispositif"
+    ],
+    "État de salubrité autour du ménage": [
+      "Très propre",
+      "Propre",
+      "Insalubre",
+      "Moyennement propre",
+      "Très insalubre"
+    ],
+    "Commune": [
+      "Limete",
+      "Masina",
+      "Bumbu",
+      "Mont-Ngafula",
+      "Ngiri-Ngiri",
+      "N’sele",
+      "Ngaliema",
+      "Kimbanseke",
+      "Ndjili",
+      "Lemba",
+      "Bandalungwa",
+      "Lingwala",
+      "Kinshasa",
+      "Kasa-Vubu",
+      "Selembao",
+      "Barumbu",
+      "Kintambo",
+      "Matete",
+      "Gombe",
+      "Kisenso",
+      "Ngaba",
+      "Makala",
+      "Maluku",
+      "Kalamu"
+    ],
+    "Quartier": [
+      "Industriel",
+      "Sans fil",
+      "Matadi",
+      "Ntomba",
+      "Kindele",
+      "Masanga-Mbila",
+      "Mbandaka",
+      "Elengesa",
+      "Khartoum",
+      "Diangenda",
+      "Mpasa 2",
+      "Tala ngayi",
+      "Ndjelo",
+      "Bumba",
+      "Mikonga",
+      "Kingasani",
+      "Petrocongo",
+      "Mikondo",
+      "3",
+      "7",
+      "2",
+      "Nsanga",
+      "Bangu",
+      "Righini",
+      "Livulu",
+      "Banza lemba",
+      "Lingwala",
+      "Résidentiel",
+      "Mombele",
+      "Bisengo",
+      "Adoula",
+      "Lokole",
+      "Ngundalukombe",
+      "Ngondalukombe 😅",
+      "Ngondalukombe",
+      "30 juin",
+      "30juin",
+      "Madimba",
+      "Lubumbashi",
+      "Cité verte",
+      "Libulu",
+      "Assossa",
+      "Lubudi",
+      "Ancien combattant",
+      "Cité mpumbu",
+      "Cité pumbu",
+      "Salongo",
+      "Wenze",
+      "Lisala",
+      "Kapinga",
+      "Ndolo",
+      "Inga",
+      "Kunda",
+      "Haut commandement",
+      "Batetela",
+      "Lemera",
+      "Ngomba",
+      "Djalo",
+      "Ngwaka",
+      "De la paix",
+      "Luyi",
+      "Bulambemba",
+      "Mateba",
+      "Bahumbu",
+      "Kisantu",
+      "Kwango",
+      "Menkao",
+      "Kimbangu",
+      "Yolo sud",
+      "Yolo Nord",
+      "Nsola",
+      "Vitamine",
+      "Bateke",
+      "Mbankana",
+      "Monaco"
+    ],
+    "Existe-t-il une structure de santé formelle proche du domicile ?": [
+      "Oui",
+      "Non",
+      "Ne sait pas"
+    ],
+    "Type de structure la plus proche": [
+      "Hôpital public",
+      "Centre de santé privé",
+      "Centre de santé public",
+      "Hôpital privé",
+      "Pharmacie uniquement",
+      "Structure confessionnelle"
+    ],
+    "Distance estimée entre le ménage et la structure la plus proche": [
+      "Moins de 500 m",
+      "500 m à moins de 1 km",
+      "Ne sait pas",
+      "1–3 km",
+      "Plus de 5 km",
+      "3–5 km"
+    ],
+    "Temps moyen pour atteindre cette structure": [
+      "Moins de 15 minutes",
+      "15–30 minutes",
+      "31–60 minutes",
+      "Plus d’une heure"
+    ],
+    "Moyen principal utilisé pour s’y rendre": [
+      "À pied",
+      "Moto",
+      "Véhicule personnel",
+      "Transport en commun"
+    ],
+    "Coût moyen aller-retour du transport vers cette structure": [
+      "Aucun coût",
+      "2 000–4 999 FC",
+      "Moins de 2 000 FC",
+      "5 000–9 999 FC",
+      "10 000 FC et plus"
+    ],
+    "L’état de la route rend-il difficile l’accès à cette structure ?": [
+      "Non",
+      "Oui, un peu",
+      "Oui, beaucoup"
+    ],
+    "Les horaires d’ouverture de cette structure sont-ils adaptés aux besoins du ménage ?": [
+      "Oui",
+      "Ne sait pas",
+      "Non"
+    ],
+    "Cette structure est-elle disponible en cas d’urgence ?": [
+      "Oui",
+      "Ne sait pas",
+      "Non"
+    ],
+    "Nombre approximatif de structures de santé accessibles dans votre quartier": [
+      "Trois structures et plus",
+      "Ne sait pas",
+      "Aucune",
+      "Deux structures",
+      "Une structure"
+    ],
+    "Localisation de la structure de santé la plus proche": [
+      "Même quartier",
+      "Même commune",
+      "Même avenue",
+      "Commune voisine",
+      "Ne sait pas"
+    ],
+    "Le ménage fréquente-t-il habituellement la structure la plus proche ?": [
+      "Oui",
+      "Non"
+    ],
+    "Couverture sanitaire perçue du quartier": [
+      "Couverture moyenne",
+      "Faible couverture",
+      "Bonne couverture",
+      "Ne sait pas"
+    ],
+    "Nombre de personnes ayant eu besoin de soins": [
+      "Une personne",
+      "Trois personnes",
+      "Deux personnes",
+      "Quatre personnes et plus"
+    ],
+    "Personne concernée par le cas le plus récent": [
+      "Répondant",
+      "Conjoint(e)",
+      "Adulte de 18 à 59 ans",
+      "Enfant de moins de 5 ans",
+      "Enfant de 5 à 17 ans",
+      "Personne âgée de 60 ans et plus"
+    ],
+    "Sexe de la personne malade": [
+      "Masculin",
+      "Féminin"
+    ],
+    "Type principal de maladie ou problème de santé": [
+      "Accident/blessure",
+      "Infection respiratoire",
+      "Grossesse/accouchement",
+      "Paludisme/fièvre",
+      "Maladie chronique",
+      "Autre problème de santé",
+      "Diarrhée/maladie digestive"
+    ],
+    "Gravité perçue du problème de santé": [
+      "Grave",
+      "Moyenne",
+      "Très grave",
+      "Faible"
+    ],
+    "Fréquence des épisodes de maladie dans le ménage au cours du dernier mois": [
+      "Aucun épisode",
+      "Une fois",
+      "Deux à trois fois",
+      "Plus de trois fois"
+    ],
+    "Qualité globale des services disponibles dans la zone": [
+      "Moyenne",
+      "Bonne",
+      "Mauvaise",
+      "Très mauvaise",
+      "Très bonne"
+    ],
+    "Niveau de confiance envers les structures formelles": [
+      "Confiance partielle",
+      "Aucune confiance",
+      "Confiance totale"
+    ],
+    "Disponibilité des médicaments dans les structures fréquentées": [
+      "Souvent",
+      "Jamais",
+      "Rarement",
+      "Toujours"
+    ],
+    "Temps d’attente dans les structures": [
+      "Acceptable",
+      "Long",
+      "Court",
+      "Très long"
+    ],
+    "Accueil du personnel de santé": [
+      "Moyen",
+      "Bon",
+      "Mauvais",
+      "Très bon",
+      "Très mauvais"
+    ]
+  },
+  "defaults": {
+    "Sexe du répondant": "Féminin",
+    "Tranche d’âge du répondant": "25–34 ans",
+    "Situation matrimoniale": "Marié(e)",
+    "Niveau d’instruction du répondant": "Supérieur/universitaire",
+    "Niveau d’instruction du conjoint/de la conjointe": "Supérieur/universitaire",
+    "Activité principale du répondant": "Salarié du secteur privé",
+    "Le répondant dispose-t-il d’un revenu régulier ?": "Oui",
+    "Nombre total de personnes dans le ménage": "3–4 personnes",
+    "Nombre d’enfants de moins de 5 ans": "Aucun",
+    "Nombre de personnes âgées de 60 ans et plus": "Aucune",
+    "Nombre de personnes ayant une activité rémunérée dans le ménage": "Une personne",
+    "Revenu mensuel approximatif total du ménage": "Ne sait pas/refus",
+    "Dépense mensuelle en alimentation": "200 000–299 999 FC",
+    "Dépense mensuelle en santé": "Moins de 20 000 FC",
+    "Dépense mensuelle en transport": "100 000 FC et plus",
+    "Dépense mensuelle en éducation": "Aucune",
+    "Au moins un membre du ménage bénéficie-t-il d’une assurance ou mutuelle de santé ?": "Non",
+    "Type de couverture santé": "Assurance employeur",
+    "Cette couverture facilite-t-elle l’accès aux soins ?": "Oui, beaucoup",
+    "En cas de maladie grave, le ménage pourrait-il faire face aux dépenses ?": "Difficilement",
+    "Au cours des 12 derniers mois, le ménage a-t-il renoncé aux soins pour raisons financières ?": "Non",
+    "Au cours des 12 derniers mois, le ménage a-t-il connu une dépense de santé difficile à supporter ?": "Non",
+    "Source principale d’eau du ménage": "Robinet dans la parcelle",
+    "Le ménage dispose-t-il régulièrement d’eau potable ?": "Oui",
+    "Type principal de toilettes utilisé": "Toilettes partagées",
+    "État de salubrité autour du ménage": "Propre",
+    "Commune": "Lemba",
+    "Quartier": "Righini",
+    "_Coordonnées GPS du ménage_latitude": -4.39818125,
+    "_Coordonnées GPS du ménage_longitude": 15.31514645,
+    "Existe-t-il une structure de santé formelle proche du domicile ?": "Oui",
+    "Type de structure la plus proche": "Centre de santé privé",
+    "Distance estimée entre le ménage et la structure la plus proche": "Moins de 500 m",
+    "Temps moyen pour atteindre cette structure": "Moins de 15 minutes",
+    "Moyen principal utilisé pour s’y rendre": "À pied",
+    "Coût moyen aller-retour du transport vers cette structure": "Aucun coût",
+    "L’état de la route rend-il difficile l’accès à cette structure ?": "Non",
+    "Les horaires d’ouverture de cette structure sont-ils adaptés aux besoins du ménage ?": "Oui",
+    "Cette structure est-elle disponible en cas d’urgence ?": "Oui",
+    "Nombre approximatif de structures de santé accessibles dans votre quartier": "Une structure",
+    "Localisation de la structure de santé la plus proche": "Même quartier",
+    "Le ménage fréquente-t-il habituellement la structure la plus proche ?": "Non",
+    "Couverture sanitaire perçue du quartier": "Couverture moyenne",
+    "Nombre de personnes ayant eu besoin de soins": "Une personne",
+    "Personne concernée par le cas le plus récent": "Conjoint(e)",
+    "Sexe de la personne malade": "Féminin",
+    "Type principal de maladie ou problème de santé": "Paludisme/fièvre",
+    "Gravité perçue du problème de santé": "Moyenne",
+    "Fréquence des épisodes de maladie dans le ménage au cours du dernier mois": "Une fois",
+    "Qualité globale des services disponibles dans la zone": "Moyenne",
+    "Niveau de confiance envers les structures formelles": "Confiance partielle",
+    "Disponibilité des médicaments dans les structures fréquentées": "Souvent",
+    "Temps d’attente dans les structures": "Acceptable",
+    "Accueil du personnel de santé": "Moyen"
+  },
+  "locality": {
+    "Limete": {
+      "zone": "Zone semi-périphérique",
+      "latitude": -4.34728055,
+      "longitude": 15.33049525,
+      "quartiers": {
+        "Industriel": {
+          "latitude": -4.32999145,
+          "longitude": 15.3321526,
+          "n": 14
+        },
+        "Résidentiel": {
+          "latitude": -4.34728055,
+          "longitude": 15.32738265,
+          "n": 14
+        },
+        "Mombele": {
+          "latitude": -4.3599879,
+          "longitude": 15.3313762,
+          "n": 14
+        }
+      }
+    },
+    "Masina": {
+      "zone": "Zone semi-périphérique",
+      "latitude": -4.3880784,
+      "longitude": 15.3759751,
+      "quartiers": {
+        "Sans fil": {
+          "latitude": -4.3880474,
+          "longitude": 15.37590455,
+          "n": 14
+        },
+        "Petrocongo": {
+          "latitude": -4.3748719,
+          "longitude": 15.3711026,
+          "n": 13
+        },
+        "Matadi": {
+          "latitude": -4.3985923499999995,
+          "longitude": 15.41531705,
+          "n": 14
+        }
+      }
+    },
+    "Bumbu": {
+      "zone": "Zone semi-périphérique",
+      "latitude": -4.37589255,
+      "longitude": 15.29025315,
+      "quartiers": {
+        "Matadi": {
+          "latitude": -4.37707465,
+          "longitude": 15.2836853,
+          "n": 14
+        },
+        "Ntomba": {
+          "latitude": -4.37589255,
+          "longitude": 15.29071635,
+          "n": 14
+        },
+        "Mbandaka": {
+          "latitude": -4.37139785,
+          "longitude": 15.2918492,
+          "n": 14
+        }
+      }
+    },
+    "Mont-Ngafula": {
+      "zone": "Zone périphérique",
+      "latitude": -4.4141028,
+      "longitude": 15.298284599999999,
+      "quartiers": {
+        "Kindele": {
+          "latitude": -4.404965750000001,
+          "longitude": 15.3002874,
+          "n": 14
+        },
+        "Masanga-Mbila": {
+          "latitude": -4.4141028,
+          "longitude": 15.298284599999999,
+          "n": 14
+        },
+        "Cité mpumbu": {
+          "latitude": -4.4449793,
+          "longitude": 15.2576845,
+          "n": 12
+        },
+        "Cité pumbu": {
+          "latitude": -4.4448173,
+          "longitude": 15.25602035,
+          "n": 2
+        }
+      }
+    },
+    "Ngiri-Ngiri": {
+      "zone": "Zone centrale",
+      "latitude": -4.3567772,
+      "longitude": 15.3036843,
+      "quartiers": {
+        "Elengesa": {
+          "latitude": -4.35959435,
+          "longitude": 15.303681950000001,
+          "n": 14
+        },
+        "Khartoum": {
+          "latitude": -4.356203949999999,
+          "longitude": 15.3068672,
+          "n": 14
+        },
+        "Diangenda": {
+          "latitude": -4.3542322,
+          "longitude": 15.3018727,
+          "n": 13
+        }
+      }
+    },
+    "N’sele": {
+      "zone": "Zone périphérique",
+      "latitude": -4.3798726,
+      "longitude": 15.486595,
+      "quartiers": {
+        "Mpasa 2": {
+          "latitude": -4.38090875,
+          "longitude": 15.487354150000002,
+          "n": 14
+        },
+        "Tala ngayi": {
+          "latitude": -4.37955735,
+          "longitude": 15.4867639,
+          "n": 14
+        },
+        "Mikonga": {
+          "latitude": -4.3797123,
+          "longitude": 15.4838602,
+          "n": 13
+        }
+      }
+    },
+    "Ngaliema": {
+      "zone": "Zone périphérique",
+      "latitude": -4.4019032,
+      "longitude": 15.251040799999998,
+      "quartiers": {
+        "Ndjelo": {
+          "latitude": -4.409398100000001,
+          "longitude": 15.2492382,
+          "n": 14
+        },
+        "Bumba": {
+          "latitude": -4.4019032,
+          "longitude": 15.248571550000001,
+          "n": 14
+        },
+        "Bangu": {
+          "latitude": -4.37958705,
+          "longitude": 15.26239,
+          "n": 14
+        }
+      }
+    },
+    "Kimbanseke": {
+      "zone": "Zone périphérique",
+      "latitude": -4.4066095,
+      "longitude": 15.4093615,
+      "quartiers": {
+        "Kingasani": {
+          "latitude": -4.4066095,
+          "longitude": 15.4093615,
+          "n": 14
+        },
+        "Mikondo": {
+          "latitude": -4.41174475,
+          "longitude": 15.4253388,
+          "n": 14
+        },
+        "Nsanga": {
+          "latitude": -4.40090485,
+          "longitude": 15.3978754,
+          "n": 14
+        }
+      }
+    },
+    "Ndjili": {
+      "zone": "Zone semi-périphérique",
+      "latitude": -4.3998134,
+      "longitude": 15.37628225,
+      "quartiers": {
+        "3": {
+          "latitude": -4.40403855,
+          "longitude": 15.37865095,
+          "n": 14
+        },
+        "7": {
+          "latitude": -4.3998134,
+          "longitude": 15.3738375,
+          "n": 14
+        },
+        "2": {
+          "latitude": -4.3967788,
+          "longitude": 15.3769754,
+          "n": 14
+        }
+      }
+    },
+    "Lemba": {
+      "zone": "Zone semi-périphérique",
+      "latitude": -4.41018025,
+      "longitude": 15.3169633,
+      "quartiers": {
+        "Righini": {
+          "latitude": -4.39818125,
+          "longitude": 15.31514645,
+          "n": 14
+        },
+        "Livulu": {
+          "latitude": -4.41006345,
+          "longitude": 15.3183403,
+          "n": 14
+        },
+        "Banza lemba": {
+          "latitude": -4.4158,
+          "longitude": 15.316899249999999,
+          "n": 14
+        }
+      }
+    },
+    "Bandalungwa": {
+      "zone": "Zone semi-périphérique",
+      "latitude": -4.3529477,
+      "longitude": 15.281722250000001,
+      "quartiers": {
+        "Lingwala": {
+          "latitude": -4.35596255,
+          "longitude": 15.2868944,
+          "n": 14
+        },
+        "Bisengo": {
+          "latitude": -4.3529477,
+          "longitude": 15.280985300000001,
+          "n": 14
+        },
+        "Adoula": {
+          "latitude": -4.3469472499999995,
+          "longitude": 15.281722250000001,
+          "n": 14
+        }
+      }
+    },
+    "Lingwala": {
+      "zone": "Zone centrale",
+      "latitude": -4.3250329,
+      "longitude": 15.2999773,
+      "quartiers": {
+        "Lokole": {
+          "latitude": -4.32414795,
+          "longitude": 15.2999263,
+          "n": 14
+        },
+        "Ngundalukombe": {
+          "latitude": -4.325791199999999,
+          "longitude": 15.303080399999999,
+          "n": 12
+        },
+        "Ngondalukombe 😅": {
+          "latitude": -4.3253906,
+          "longitude": 15.3053356,
+          "n": 1
+        },
+        "Ngondalukombe": {
+          "latitude": -4.325631,
+          "longitude": 15.3044656,
+          "n": 1
+        },
+        "30 juin": {
+          "latitude": -4.325072499999999,
+          "longitude": 15.29877295,
+          "n": 12
+        },
+        "30juin": {
+          "latitude": -4.3255639,
+          "longitude": 15.296914,
+          "n": 1
+        }
+      }
+    },
+    "Kinshasa": {
+      "zone": "Zone centrale",
+      "latitude": -4.3222513,
+      "longitude": 15.3075937,
+      "quartiers": {
+        "Madimba": {
+          "latitude": -4.3208738,
+          "longitude": 15.3121603,
+          "n": 13
+        },
+        "Djalo": {
+          "latitude": -4.3252381,
+          "longitude": 15.30754535,
+          "n": 14
+        },
+        "Ngwaka": {
+          "latitude": -4.3221791,
+          "longitude": 15.30688525,
+          "n": 14
+        }
+      }
+    },
+    "Kasa-Vubu": {
+      "zone": "Zone centrale",
+      "latitude": -4.3504586,
+      "longitude": 15.307205100000001,
+      "quartiers": {
+        "Lubumbashi": {
+          "latitude": -4.3512195,
+          "longitude": 15.3078617,
+          "n": 14
+        },
+        "Assossa": {
+          "latitude": -4.35082255,
+          "longitude": 15.3058634,
+          "n": 14
+        },
+        "Ancien combattant": {
+          "latitude": -4.3478191,
+          "longitude": 15.30774555,
+          "n": 14
+        }
+      }
+    },
+    "Selembao": {
+      "zone": "Zone périphérique",
+      "latitude": -4.3837151,
+      "longitude": 15.2812964,
+      "quartiers": {
+        "Cité verte": {
+          "latitude": -4.43429585,
+          "longitude": 15.2598679,
+          "n": 14
+        },
+        "Lubudi": {
+          "latitude": -4.3751507499999995,
+          "longitude": 15.28174205,
+          "n": 14
+        },
+        "Inga": {
+          "latitude": -4.3819794,
+          "longitude": 15.2842747,
+          "n": 13
+        }
+      }
+    },
+    "Barumbu": {
+      "zone": "Zone centrale",
+      "latitude": -4.32055255,
+      "longitude": 15.32775195,
+      "quartiers": {
+        "Libulu": {
+          "latitude": -4.3192895,
+          "longitude": 15.317976250000001,
+          "n": 14
+        },
+        "Kapinga": {
+          "latitude": -4.32055255,
+          "longitude": 15.32775195,
+          "n": 14
+        },
+        "Ndolo": {
+          "latitude": -4.32185225,
+          "longitude": 15.330151449999999,
+          "n": 14
+        }
+      }
+    },
+    "Kintambo": {
+      "zone": "Zone centrale",
+      "latitude": -4.3354066,
+      "longitude": 15.26397315,
+      "quartiers": {
+        "Salongo": {
+          "latitude": -4.3371939,
+          "longitude": 15.26172245,
+          "n": 14
+        },
+        "Wenze": {
+          "latitude": -4.33434765,
+          "longitude": 15.26397315,
+          "n": 14
+        },
+        "Lisala": {
+          "latitude": -4.3347140500000005,
+          "longitude": 15.267773949999999,
+          "n": 14
+        }
+      }
+    },
+    "Matete": {
+      "zone": "Zone semi-périphérique",
+      "latitude": -4.39172105,
+      "longitude": 15.3390473,
+      "quartiers": {
+        "Kunda": {
+          "latitude": -4.38857445,
+          "longitude": 15.340681499999999,
+          "n": 14
+        },
+        "Vitamine": {
+          "latitude": -4.3949888,
+          "longitude": 15.33826345,
+          "n": 14
+        },
+        "Bateke": {
+          "latitude": -4.39172105,
+          "longitude": 15.3390451,
+          "n": 14
+        }
+      }
+    },
+    "Gombe": {
+      "zone": "Zone centrale",
+      "latitude": -4.3050496,
+      "longitude": 15.2839559,
+      "quartiers": {
+        "Haut commandement": {
+          "latitude": -4.312998950000001,
+          "longitude": 15.274882250000001,
+          "n": 14
+        },
+        "Batetela": {
+          "latitude": -4.30457995,
+          "longitude": 15.28462815,
+          "n": 14
+        },
+        "Lemera": {
+          "latitude": -4.3049109,
+          "longitude": 15.2922284,
+          "n": 13
+        }
+      }
+    },
+    "Kisenso": {
+      "zone": "Zone périphérique",
+      "latitude": -4.401056049999999,
+      "longitude": 15.3531552,
+      "quartiers": {
+        "Ngomba": {
+          "latitude": -4.397108749999999,
+          "longitude": 15.340042449999999,
+          "n": 14
+        },
+        "De la paix": {
+          "latitude": -4.4005086,
+          "longitude": 15.35243105,
+          "n": 14
+        },
+        "Nsola": {
+          "latitude": -4.408596749999999,
+          "longitude": 15.35885635,
+          "n": 14
+        }
+      }
+    },
+    "Ngaba": {
+      "zone": "Zone semi-périphérique",
+      "latitude": -4.3856035,
+      "longitude": 15.320148249999999,
+      "quartiers": {
+        "Luyi": {
+          "latitude": -4.3813904,
+          "longitude": 15.320148249999999,
+          "n": 14
+        },
+        "Bulambemba": {
+          "latitude": -4.38661545,
+          "longitude": 15.3228144,
+          "n": 14
+        },
+        "Mateba": {
+          "latitude": -4.38806075,
+          "longitude": 15.31769195,
+          "n": 14
+        }
+      }
+    },
+    "Makala": {
+      "zone": "Zone semi-périphérique",
+      "latitude": -4.3822887,
+      "longitude": 15.3147649,
+      "quartiers": {
+        "Bahumbu": {
+          "latitude": -4.3839472,
+          "longitude": 15.3281034,
+          "n": 14
+        },
+        "Kisantu": {
+          "latitude": -4.3729795,
+          "longitude": 15.305368,
+          "n": 14
+        },
+        "Kwango": {
+          "latitude": -4.3822434999999995,
+          "longitude": 15.3147649,
+          "n": 14
+        }
+      }
+    },
+    "Maluku": {
+      "zone": "Zone périphérique",
+      "latitude": -4.18971,
+      "longitude": 15.69612,
+      "quartiers": {
+        "Menkao": {
+          "latitude": -4.18971,
+          "longitude": 15.69612,
+          "n": 13
+        },
+        "Mbankana": {
+          "latitude": -4.449595,
+          "longitude": 16.19968,
+          "n": 14
+        },
+        "Monaco": {
+          "latitude": -4.05056005,
+          "longitude": 15.55839105,
+          "n": 14
+        }
+      }
+    },
+    "Kalamu": {
+      "zone": "Zone centrale",
+      "latitude": -4.3600493,
+      "longitude": 15.3213508,
+      "quartiers": {
+        "Kimbangu": {
+          "latitude": -4.3666826499999996,
+          "longitude": 15.3195214,
+          "n": 14
+        },
+        "Yolo sud": {
+          "latitude": -4.3600493,
+          "longitude": 15.3213508,
+          "n": 14
+        },
+        "Yolo Nord": {
+          "latitude": -4.35667905,
+          "longitude": 15.321536649999999,
+          "n": 14
+        }
+      }
+    }
+  },
+  "scenarios": {
+    "Ménage favorable": {
+      "inputs": {
+        "Sexe du répondant": "Masculin",
+        "Tranche d’âge du répondant": "Moins de 25 ans",
+        "Situation matrimoniale": "Célibataire",
+        "Niveau d’instruction du répondant": "Primaire",
+        "Niveau d’instruction du conjoint/de la conjointe": null,
+        "Activité principale du répondant": "Salarié du secteur public",
+        "Le répondant dispose-t-il d’un revenu régulier ?": "Non",
+        "Nombre total de personnes dans le ménage": "3–4 personnes",
+        "Nombre d’enfants de moins de 5 ans": "Un enfant",
+        "Nombre de personnes âgées de 60 ans et plus": "Une personne",
+        "Nombre de personnes ayant une activité rémunérée dans le ménage": "Une personne",
+        "Revenu mensuel approximatif total du ménage": "100–199 USD",
+        "Dépense mensuelle en alimentation": "100 000–199 999 FC",
+        "Dépense mensuelle en santé": "20 000–49 999 FC",
+        "Dépense mensuelle en transport": "20 000–49 999 FC",
+        "Dépense mensuelle en éducation": "Moins de 50 000 FC",
+        "Au moins un membre du ménage bénéficie-t-il d’une assurance ou mutuelle de santé ?": "Non",
+        "Type de couverture santé": null,
+        "Cette couverture facilite-t-elle l’accès aux soins ?": null,
+        "En cas de maladie grave, le ménage pourrait-il faire face aux dépenses ?": "Difficilement",
+        "Au cours des 12 derniers mois, le ménage a-t-il renoncé aux soins pour raisons financières ?": "Non",
+        "Au cours des 12 derniers mois, le ménage a-t-il connu une dépense de santé difficile à supporter ?": "Non",
+        "Source principale d’eau du ménage": "Forage/puits aménagé",
+        "Le ménage dispose-t-il régulièrement d’eau potable ?": "Non",
+        "Type principal de toilettes utilisé": "Latrines améliorées",
+        "État de salubrité autour du ménage": "Moyennement propre",
+        "Commune": "Kintambo",
+        "Quartier": "Lisala",
+        "_Coordonnées GPS du ménage_latitude": -4.3347091,
+        "_Coordonnées GPS du ménage_longitude": 15.2678258,
+        "Existe-t-il une structure de santé formelle proche du domicile ?": "Non",
+        "Type de structure la plus proche": null,
+        "Distance estimée entre le ménage et la structure la plus proche": null,
+        "Temps moyen pour atteindre cette structure": null,
+        "Moyen principal utilisé pour s’y rendre": null,
+        "Coût moyen aller-retour du transport vers cette structure": null,
+        "L’état de la route rend-il difficile l’accès à cette structure ?": null,
+        "Les horaires d’ouverture de cette structure sont-ils adaptés aux besoins du ménage ?": null,
+        "Cette structure est-elle disponible en cas d’urgence ?": null,
+        "Nombre approximatif de structures de santé accessibles dans votre quartier": "Aucune",
+        "Localisation de la structure de santé la plus proche": "Même quartier",
+        "Le ménage fréquente-t-il habituellement la structure la plus proche ?": "Oui",
+        "Couverture sanitaire perçue du quartier": "Couverture moyenne",
+        "Nombre de personnes ayant eu besoin de soins": "Une personne",
+        "Personne concernée par le cas le plus récent": "Répondant",
+        "Sexe de la personne malade": "Masculin",
+        "Type principal de maladie ou problème de santé": "Paludisme/fièvre",
+        "Gravité perçue du problème de santé": "Grave",
+        "Fréquence des épisodes de maladie dans le ménage au cours du dernier mois": "Aucun épisode",
+        "Qualité globale des services disponibles dans la zone": "Mauvaise",
+        "Niveau de confiance envers les structures formelles": "Confiance partielle",
+        "Disponibilité des médicaments dans les structures fréquentées": "Souvent",
+        "Temps d’attente dans les structures": "Long",
+        "Accueil du personnel de santé": "Mauvais"
+      },
+      "p_xgboost": 0.9572407603263855,
+      "p_random_forest": 0.9214853005095067
+    },
+    "Ménage intermédiaire": {
+      "inputs": {
+        "Sexe du répondant": "Féminin",
+        "Tranche d’âge du répondant": "45–54 ans",
+        "Situation matrimoniale": "Marié(e)",
+        "Niveau d’instruction du répondant": "Secondaire",
+        "Niveau d’instruction du conjoint/de la conjointe": "Non applicable",
+        "Activité principale du répondant": "Commerçant",
+        "Le répondant dispose-t-il d’un revenu régulier ?": "Oui",
+        "Nombre total de personnes dans le ménage": "7 personnes et plus",
+        "Nombre d’enfants de moins de 5 ans": "Aucun",
+        "Nombre de personnes âgées de 60 ans et plus": "Aucune",
+        "Nombre de personnes ayant une activité rémunérée dans le ménage": "Aucune",
+        "Revenu mensuel approximatif total du ménage": "100–199 USD",
+        "Dépense mensuelle en alimentation": "300 000 FC et plus",
+        "Dépense mensuelle en santé": "100 000 FC et plus",
+        "Dépense mensuelle en transport": "100 000 FC et plus",
+        "Dépense mensuelle en éducation": "200 000 FC et plus",
+        "Au moins un membre du ménage bénéficie-t-il d’une assurance ou mutuelle de santé ?": "Non",
+        "Type de couverture santé": null,
+        "Cette couverture facilite-t-elle l’accès aux soins ?": null,
+        "En cas de maladie grave, le ménage pourrait-il faire face aux dépenses ?": "Difficilement",
+        "Au cours des 12 derniers mois, le ménage a-t-il renoncé aux soins pour raisons financières ?": "Oui",
+        "Au cours des 12 derniers mois, le ménage a-t-il connu une dépense de santé difficile à supporter ?": "Oui",
+        "Source principale d’eau du ménage": "Robinet dans la parcelle",
+        "Le ménage dispose-t-il régulièrement d’eau potable ?": "Oui",
+        "Type principal de toilettes utilisé": "Toilettes partagées",
+        "État de salubrité autour du ménage": "Propre",
+        "Commune": "Ndjili",
+        "Quartier": "2",
+        "_Coordonnées GPS du ménage_latitude": -4.3964813,
+        "_Coordonnées GPS du ménage_longitude": 15.3780734,
+        "Existe-t-il une structure de santé formelle proche du domicile ?": "Oui",
+        "Type de structure la plus proche": "Centre de santé privé",
+        "Distance estimée entre le ménage et la structure la plus proche": "Moins de 500 m",
+        "Temps moyen pour atteindre cette structure": "Moins de 15 minutes",
+        "Moyen principal utilisé pour s’y rendre": "À pied",
+        "Coût moyen aller-retour du transport vers cette structure": "Aucun coût",
+        "L’état de la route rend-il difficile l’accès à cette structure ?": "Non",
+        "Les horaires d’ouverture de cette structure sont-ils adaptés aux besoins du ménage ?": "Oui",
+        "Cette structure est-elle disponible en cas d’urgence ?": "Oui",
+        "Nombre approximatif de structures de santé accessibles dans votre quartier": "Trois structures et plus",
+        "Localisation de la structure de santé la plus proche": "Même quartier",
+        "Le ménage fréquente-t-il habituellement la structure la plus proche ?": "Oui",
+        "Couverture sanitaire perçue du quartier": "Bonne couverture",
+        "Nombre de personnes ayant eu besoin de soins": "Une personne",
+        "Personne concernée par le cas le plus récent": "Conjoint(e)",
+        "Sexe de la personne malade": "Féminin",
+        "Type principal de maladie ou problème de santé": "Infection respiratoire",
+        "Gravité perçue du problème de santé": "Moyenne",
+        "Fréquence des épisodes de maladie dans le ménage au cours du dernier mois": "Une fois",
+        "Qualité globale des services disponibles dans la zone": "Bonne",
+        "Niveau de confiance envers les structures formelles": "Confiance totale",
+        "Disponibilité des médicaments dans les structures fréquentées": "Souvent",
+        "Temps d’attente dans les structures": "Acceptable",
+        "Accueil du personnel de santé": "Bon"
+      },
+      "p_xgboost": 0.500198483467102,
+      "p_random_forest": 0.40511091326383886
+    },
+    "Ménage vulnérable": {
+      "inputs": {
+        "Sexe du répondant": "Féminin",
+        "Tranche d’âge du répondant": "25–34 ans",
+        "Situation matrimoniale": "Union libre",
+        "Niveau d’instruction du répondant": "Primaire",
+        "Niveau d’instruction du conjoint/de la conjointe": "Primaire",
+        "Activité principale du répondant": "Salarié du secteur privé",
+        "Le répondant dispose-t-il d’un revenu régulier ?": "Non",
+        "Nombre total de personnes dans le ménage": "3–4 personnes",
+        "Nombre d’enfants de moins de 5 ans": "Un enfant",
+        "Nombre de personnes âgées de 60 ans et plus": "Une personne",
+        "Nombre de personnes ayant une activité rémunérée dans le ménage": "Une personne",
+        "Revenu mensuel approximatif total du ménage": "100–199 USD",
+        "Dépense mensuelle en alimentation": "100 000–199 999 FC",
+        "Dépense mensuelle en santé": "50 000–99 999 FC",
+        "Dépense mensuelle en transport": "50 000–99 999 FC",
+        "Dépense mensuelle en éducation": "50 000–99 999 FC",
+        "Au moins un membre du ménage bénéficie-t-il d’une assurance ou mutuelle de santé ?": "Non",
+        "Type de couverture santé": null,
+        "Cette couverture facilite-t-elle l’accès aux soins ?": null,
+        "En cas de maladie grave, le ménage pourrait-il faire face aux dépenses ?": "Oui",
+        "Au cours des 12 derniers mois, le ménage a-t-il renoncé aux soins pour raisons financières ?": "Oui",
+        "Au cours des 12 derniers mois, le ménage a-t-il connu une dépense de santé difficile à supporter ?": "Oui",
+        "Source principale d’eau du ménage": "Robinet public",
+        "Le ménage dispose-t-il régulièrement d’eau potable ?": "Non",
+        "Type principal de toilettes utilisé": "Latrines améliorées",
+        "État de salubrité autour du ménage": "Insalubre",
+        "Commune": "Maluku",
+        "Quartier": "Menkao",
+        "_Coordonnées GPS du ménage_latitude": -4.0583362,
+        "_Coordonnées GPS du ménage_longitude": 15.5534652,
+        "Existe-t-il une structure de santé formelle proche du domicile ?": "Non",
+        "Type de structure la plus proche": null,
+        "Distance estimée entre le ménage et la structure la plus proche": null,
+        "Temps moyen pour atteindre cette structure": null,
+        "Moyen principal utilisé pour s’y rendre": null,
+        "Coût moyen aller-retour du transport vers cette structure": null,
+        "L’état de la route rend-il difficile l’accès à cette structure ?": null,
+        "Les horaires d’ouverture de cette structure sont-ils adaptés aux besoins du ménage ?": null,
+        "Cette structure est-elle disponible en cas d’urgence ?": null,
+        "Nombre approximatif de structures de santé accessibles dans votre quartier": "Une structure",
+        "Localisation de la structure de santé la plus proche": "Même quartier",
+        "Le ménage fréquente-t-il habituellement la structure la plus proche ?": "Non",
+        "Couverture sanitaire perçue du quartier": "Faible couverture",
+        "Nombre de personnes ayant eu besoin de soins": "Deux personnes",
+        "Personne concernée par le cas le plus récent": "Conjoint(e)",
+        "Sexe de la personne malade": "Féminin",
+        "Type principal de maladie ou problème de santé": "Infection respiratoire",
+        "Gravité perçue du problème de santé": "Moyenne",
+        "Fréquence des épisodes de maladie dans le ménage au cours du dernier mois": "Une fois",
+        "Qualité globale des services disponibles dans la zone": "Mauvaise",
+        "Niveau de confiance envers les structures formelles": "Confiance partielle",
+        "Disponibilité des médicaments dans les structures fréquentées": "Souvent",
+        "Temps d’attente dans les structures": "Long",
+        "Accueil du personnel de santé": "Moyen"
+      },
+      "p_xgboost": 0.09460487216711044,
+      "p_random_forest": 0.07574471512747226
+    }
+  },
+  "threshold": 0.5,
+  "numeric_ranges": {
+    "_Coordonnées GPS du ménage_latitude": {
+      "min": -4.45183,
+      "max": -4.0486167
+    },
+    "_Coordonnées GPS du ménage_longitude": {
+      "min": 15.2471393,
+      "max": 16.20063
+    }
+  },
+  "conditional_fields": {
+    "insurance_fields": [
+      "Type de couverture santé",
+      "Cette couverture facilite-t-elle l’accès aux soins ?"
+    ],
+    "near_structure_fields": [
+      "Type de structure la plus proche",
+      "Distance estimée entre le ménage et la structure la plus proche",
+      "Temps moyen pour atteindre cette structure",
+      "Moyen principal utilisé pour s’y rendre",
+      "Coût moyen aller-retour du transport vers cette structure",
+      "L’état de la route rend-il difficile l’accès à cette structure ?",
+      "Les horaires d’ouverture de cette structure sont-ils adaptés aux besoins du ménage ?",
+      "Cette structure est-elle disponible en cas d’urgence ?"
+    ]
+  },
+  "model_metrics": {
+    "xgboost": {
+      "auc_test": 0.7927083333333333,
+      "accuracy_test": 0.71,
+      "balanced_accuracy_test": 0.6854166666666667,
+      "recall_nonaccess": 0.5625,
+      "pr_auc_nonaccess": 0.7021110039705465,
+      "brier": 0.18190307915210724
+    },
+    "random_forest": {
+      "auc_test": 0.7861458333333333,
+      "accuracy_test": 0.72,
+      "balanced_accuracy_test": 0.7125,
+      "recall_nonaccess": 0.675,
+      "pr_auc_nonaccess": 0.7111949265906055,
+      "brier": 0.189874947324366
+    }
+  },
+  "model_notes": {
+    "sample_size": 1000,
+    "target_positive": 599,
+    "target_negative": 401,
+    "encoded_features": 319,
+    "main_model": "XGBoost optimisé",
+    "secondary_model": "Random Forest optimisé",
+    "main_auc": 0.7927083333333333,
+    "main_brier": 0.18190307915210724
+  }
+}
