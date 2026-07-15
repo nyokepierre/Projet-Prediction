@@ -13,10 +13,21 @@ import plotly.graph_objects as go
 import shap
 import streamlit as st
 
+from ui_components import (
+    apply_global_styles,
+    render_badges,
+    render_footer,
+    render_hero,
+    render_result_banner,
+    render_section_header,
+    render_sidebar_brand,
+)
+
 
 APP_DIR = Path(__file__).resolve().parent
 CONFIG_PATH = APP_DIR / "app_config.json"
 BUNDLE_PATH = APP_DIR / "modeles" / "modele_acces_soins_bundle.joblib"
+STYLES_PATH = APP_DIR / "assets" / "styles.css"
 
 
 st.set_page_config(
@@ -27,87 +38,6 @@ st.set_page_config(
 )
 
 
-CUSTOM_CSS = """
-<style>
-    .stApp {
-        background:
-            radial-gradient(circle at top right, rgba(30, 136, 229, 0.08), transparent 27rem),
-            linear-gradient(180deg, #f8fbff 0%, #f4f7fb 100%);
-    }
-    [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #0b2f4f 0%, #123f66 100%);
-    }
-    [data-testid="stSidebar"] * {
-        color: #ffffff;
-    }
-    .hero {
-        padding: 1.8rem 2rem;
-        border-radius: 22px;
-        color: white;
-        background: linear-gradient(120deg, #0b4f7c 0%, #087e8b 55%, #38a3a5 100%);
-        box-shadow: 0 18px 48px rgba(11, 79, 124, 0.20);
-        margin-bottom: 1.2rem;
-    }
-    .hero h1 {
-        font-size: 2.05rem;
-        margin: 0 0 .45rem 0;
-        line-height: 1.15;
-    }
-    .hero p {
-        margin: 0;
-        font-size: 1rem;
-        opacity: .94;
-    }
-    .section-card {
-        border: 1px solid rgba(17, 70, 110, .12);
-        border-radius: 18px;
-        padding: 1rem 1.1rem;
-        background: rgba(255,255,255,.92);
-        box-shadow: 0 7px 24px rgba(18, 63, 102, .06);
-        margin-bottom: .8rem;
-    }
-    .result-favorable {
-        border-left: 7px solid #1b9e77;
-        background: #ecfbf4;
-        border-radius: 16px;
-        padding: 1rem 1.2rem;
-    }
-    .result-vulnerable {
-        border-left: 7px solid #d1495b;
-        background: #fff1f2;
-        border-radius: 16px;
-        padding: 1rem 1.2rem;
-    }
-    .small-note {
-        font-size: .88rem;
-        color: #526777;
-    }
-    .status-chip {
-        display:inline-block;
-        padding:.32rem .65rem;
-        border-radius:999px;
-        font-weight:700;
-        font-size:.82rem;
-        background:#eaf3fb;
-        color:#0b4f7c;
-        margin-right:.35rem;
-        margin-bottom:.35rem;
-    }
-    div[data-testid="stMetric"] {
-        background: rgba(255,255,255,.96);
-        border: 1px solid rgba(17,70,110,.12);
-        padding: .8rem;
-        border-radius: 16px;
-        box-shadow: 0 6px 18px rgba(18,63,102,.05);
-    }
-    .footer {
-        text-align:center;
-        color:#657786;
-        font-size:.85rem;
-        padding: 1.8rem 0 .8rem 0;
-    }
-</style>
-"""
 
 
 @st.cache_resource
@@ -509,6 +439,7 @@ def probability_figure(p_access: float, threshold: float) -> go.Figure:
         height=330,
         margin=dict(l=35, r=35, t=55, b=20),
         paper_bgcolor="rgba(0,0,0,0)",
+        font=dict(color="#172033", family="Segoe UI, Arial, sans-serif"),
     )
     return figure
 
@@ -536,6 +467,9 @@ def shap_figure(explanation: pd.DataFrame) -> go.Figure:
         margin=dict(l=20, r=20, t=55, b=30),
         paper_bgcolor="rgba(0,0,0,0)",
         plot_bgcolor="rgba(0,0,0,0)",
+        font=dict(color="#172033", family="Segoe UI, Arial, sans-serif"),
+        xaxis=dict(gridcolor="#E5EBF0", zerolinecolor="#B7C4CF"),
+        yaxis=dict(tickfont=dict(color="#172033")),
     )
     return figure
 
@@ -603,21 +537,11 @@ def render_result(
     result: dict[str, Any],
 ) -> None:
     favorable = result["predicted_class"] == 1
-    css_class = "result-favorable" if favorable else "result-vulnerable"
-    icon = "✅" if favorable else "⚠️"
-
-    st.markdown(
-        f"""
-        <div class="{css_class}">
-            <h3>{icon} {result["profile"]}</h3>
-            <p><strong>{result["level"]}</strong></p>
-            <p>
-                La probabilité prédite de recours formel est de
-                <strong>{result["p_access"]:.1%}</strong>.
-            </p>
-        </div>
-        """,
-        unsafe_allow_html=True,
+    render_result_banner(
+        profile=result["profile"],
+        level=result["level"],
+        probability=result["p_access"],
+        favorable=favorable,
     )
 
     m1, m2, m3, m4 = st.columns(4)
@@ -715,16 +639,13 @@ def render_result(
 
 
 def main() -> None:
-    st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
+    apply_global_styles(STYLES_PATH)
     config, bundle = load_assets()
     initialize_state(config)
 
     with st.sidebar:
-        st.markdown("## 🏥 Accès aux soins")
-        st.markdown(
-            "### Modèle de recours formel des ménages de Kinshasa"
-        )
-        st.markdown("---")
+        render_sidebar_brand()
+        st.markdown("#### Performance du modèle")
 
         metrics = config["model_metrics"]["xgboost"]
         st.metric("AUC-ROC du XGBoost", f"{metrics['auc_test']:.3f}")
@@ -786,27 +707,24 @@ def main() -> None:
                     use_container_width=True,
                 )
 
-    st.markdown(
-        f"""
-        <div class="hero">
-            <h1>{config["application_title"]}</h1>
-            <p>{config["application_subtitle"]}</p>
-        </div>
-        """,
-        unsafe_allow_html=True,
+    render_hero(
+        config["application_title"],
+        config["application_subtitle"],
+    )
+    render_badges(
+        [
+            "XGBoost principal",
+            "Random Forest de contrôle",
+            "54 prédicteurs",
+            "1 000 ménages analysés",
+        ]
     )
 
-    st.markdown(
-        """
-        <span class="status-chip">XGBoost principal</span>
-        <span class="status-chip">Random Forest de contrôle</span>
-        <span class="status-chip">54 prédicteurs</span>
-        <span class="status-chip">599 recours / 401 non-recours</span>
-        """,
-        unsafe_allow_html=True,
+    render_section_header(
+        "1",
+        "Renseignement du ménage",
+        "Complétez les informations disponibles. Les champs sont organisés par thème pour faciliter la saisie.",
     )
-
-    st.markdown("## 1. Renseignement du ménage")
     tabs = st.tabs(
         [
             "📍 Localisation",
@@ -820,71 +738,78 @@ def main() -> None:
     )
 
     with tabs[0]:
-        render_location(config)
+        with st.container(border=True):
+            render_location(config)
     with tabs[1]:
-        render_profile(config)
+        with st.container(border=True):
+            render_profile(config)
     with tabs[2]:
-        render_economy(config)
+        with st.container(border=True):
+            render_economy(config)
     with tabs[3]:
-        render_environment(config)
+        with st.container(border=True):
+            render_environment(config)
     with tabs[4]:
-        render_supply(config)
+        with st.container(border=True):
+            render_supply(config)
     with tabs[5]:
-        render_need(config)
+        with st.container(border=True):
+            render_need(config)
     with tabs[6]:
-        render_perception(config)
+        with st.container(border=True):
+            render_perception(config)
 
-    st.markdown("## 2. Calcul de la prédiction")
-    st.caption(
-        "Le formulaire utilise uniquement des variables disponibles avant ou "
-        "au moment de la décision de recours. Les variables postérieures au "
-        "recours ont été exclues pour éviter la fuite de cible."
+    render_section_header(
+        "2",
+        "Calcul de la prédiction",
+        "Le calcul applique automatiquement le prétraitement et les deux modèles enregistrés.",
     )
+    with st.container(border=True):
+        st.caption(
+            "Le formulaire utilise uniquement des variables disponibles avant ou "
+            "au moment de la décision de recours. Les variables postérieures au "
+            "recours ont été exclues pour éviter la fuite de cible."
+        )
 
-    if st.button(
-        "Calculer la probabilité de recours formel",
-        type="primary",
-        use_container_width=True,
-    ):
-        with st.spinner("Prétraitement des données et calcul de la prédiction…"):
-            result = run_prediction(config, bundle)
-            st.session_state.prediction_result = result
-            st.session_state.prediction_history.append(
-                {
-                    "Date": result["timestamp"],
-                    "Commune": result["inputs"]["Commune"],
-                    "Quartier": result["inputs"]["Quartier"],
-                    "Probabilité de recours": round(
-                        result["p_access"], 4
-                    ),
-                    "Profil": result["profile"],
-                    "Accord des modèles": (
-                        "Oui" if result["agreement"] else "Non"
-                    ),
-                }
-            )
-            st.session_state.prediction_history = (
-                st.session_state.prediction_history[-20:]
-            )
+        if st.button(
+            "Calculer la probabilité de recours formel",
+            type="primary",
+            use_container_width=True,
+        ):
+            with st.spinner("Prétraitement des données et calcul de la prédiction…"):
+                result = run_prediction(config, bundle)
+                st.session_state.prediction_result = result
+                st.session_state.prediction_history.append(
+                    {
+                        "Date": result["timestamp"],
+                        "Commune": result["inputs"]["Commune"],
+                        "Quartier": result["inputs"]["Quartier"],
+                        "Probabilité de recours": round(
+                            result["p_access"], 4
+                        ),
+                        "Profil": result["profile"],
+                        "Accord des modèles": (
+                            "Oui" if result["agreement"] else "Non"
+                        ),
+                    }
+                )
+                st.session_state.prediction_history = (
+                    st.session_state.prediction_history[-20:]
+                )
 
     if st.session_state.prediction_result:
-        st.markdown("## 3. Résultat")
+        render_section_header(
+            "3",
+            "Résultat de la prédiction",
+            "La probabilité, la classe opérationnelle et les principaux facteurs sont présentés ci-dessous.",
+        )
         render_result(
             config,
             bundle,
             st.session_state.prediction_result,
         )
 
-    st.markdown(
-        """
-        <div class="footer">
-            Outil de recherche développé pour le mémoire consacré à l’analyse
-            empirique et à la prédiction du recours formel aux soins des
-            ménages de Kinshasa.
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+    render_footer()
 
 
 if __name__ == "__main__":
