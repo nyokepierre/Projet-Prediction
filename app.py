@@ -1402,22 +1402,6 @@ def render_sidebar(config: dict[str, Any]) -> str:
         initialize_state(config)
         st.rerun()
 
-    st.markdown("---")
-    with st.expander("Méthode et limites"):
-        st.markdown(
-            """
-            - Base analytique : **1 000 ménages**.
-            - Cible : recours effectif à une structure formelle.
-            - Modèle principal : **XGBoost optimisé**.
-            - Seuil de classement : **0,50**.
-            - Le résultat est probabiliste et non causal.
-            - L’application n’est ni un diagnostic médical ni une décision
-              administrative automatique.
-            - Une utilisation hors de Kinshasa nécessite une validation
-              externe et un réentraînement.
-            """
-        )
-
     if st.session_state.prediction_history:
         with st.expander("Historique de la session"):
             history = pd.DataFrame(st.session_state.prediction_history)
