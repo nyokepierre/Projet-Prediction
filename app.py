@@ -620,7 +620,61 @@ div[data-testid="stExpander"] summary p {{
 [data-testid="stSidebar"] div[data-testid="stExpander"] summary,
 [data-testid="stSidebar"] div[data-testid="stExpander"] summary span,
 [data-testid="stSidebar"] div[data-testid="stExpander"] summary p {{
-    color: var(--text-sidebar) !important;
+    color: #f8fafc !important;
+}}
+
+[data-testid="stSidebar"] div[data-testid="stExpander"] {{
+    background: #132a45 !important;
+    border: 1px solid rgba(125, 211, 252, 0.35) !important;
+    border-radius: 14px;
+}}
+
+/* Historique : tableau HTML contrasté dans la sidebar */
+.history-table {{
+    background: #f8fafc;
+    border: 1px solid #94a3b8;
+    border-radius: 10px;
+    overflow-x: auto;
+    margin: 0.35rem 0 0.75rem 0;
+}}
+
+.history-table table {{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.78rem;
+}}
+
+.history-table th {{
+    background: #0e7490 !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    padding: 0.55rem 0.45rem;
+    text-align: left;
+    white-space: nowrap;
+    border-bottom: 1px solid #0b4f6c;
+}}
+
+.history-table td {{
+    background: #ffffff !important;
+    color: #0f172a !important;
+    padding: 0.5rem 0.45rem;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+}}
+
+.history-table tr:nth-child(even) td {{
+    background: #eef2f7 !important;
+}}
+
+.history-table tr:hover td {{
+    background: #dbeafe !important;
+}}
+
+[data-testid="stSidebar"] .history-table,
+[data-testid="stSidebar"] .history-table th,
+[data-testid="stSidebar"] .history-table td,
+[data-testid="stSidebar"] .history-table * {{
+    opacity: 1 !important;
 }}
 
 .footer {{
@@ -1403,9 +1457,20 @@ def render_sidebar(config: dict[str, Any]) -> str:
         st.rerun()
 
     if st.session_state.prediction_history:
-        with st.expander("Historique de la session"):
+        st.markdown("---")
+        with st.expander("Historique de la session", expanded=True):
             history = pd.DataFrame(st.session_state.prediction_history)
-            st.dataframe(history, use_container_width=True, hide_index=True)
+            display = history.copy()
+            if "Probabilité de recours" in display.columns:
+                display["Probabilité de recours"] = display[
+                    "Probabilité de recours"
+                ].map(lambda value: f"{float(value):.1%}")
+            st.markdown(
+                '<div class="history-table">'
+                + display.to_html(index=False, escape=True)
+                + "</div>",
+                unsafe_allow_html=True,
+            )
             st.download_button(
                 "Exporter l’historique (CSV)",
                 data=history.to_csv(index=False).encode("utf-8-sig"),
